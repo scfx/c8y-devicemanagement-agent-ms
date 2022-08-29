@@ -1,0 +1,98 @@
+{
+    "name": "DM Agent",
+    "type": "c8y_SmartRest2Template",
+    "com_cumulocity_model_smartrest_csv_CsvSmartRestTemplate": {
+        "requestTemplates": [
+            {
+                "method": "PUT",
+                "response": false,
+                "msgId": "dm100",
+                "api": "INVENTORY",
+                "byId": false,
+                "externalIdType": "c8y_Serial",
+                "mandatoryValues": [],
+                "customValues": [
+                    {
+                        "path": "c8y_Network.c8y_LAN.ip",
+                        "type": "STRING",
+                        "value": ""
+                    },
+                    {
+                        "path": "c8y_Network.c8y_LAN.netmask",
+                        "type": "STRING",
+                        "value": ""
+                    },
+                    {
+                        "path": "c8y_Network.c8y_LAN.name",
+                        "type": "STRING",
+                        "value": ""
+                    },
+                    {
+                        "path": "c8y_Network.c8y_LAN.enabled",
+                        "type": "INTEGER",
+                        "value": null
+                    },
+                    {
+                        "path": "c8y_Network.c8y_LAN.mac",
+                        "type": "STRING",
+                        "value": ""
+                    }
+                ],
+                "name": "Network"
+            },
+            {
+                "method": "PUT",
+                "response": false,
+                "msgId": "dm200",
+                "api": "INVENTORY",
+                "byId": false,
+                "externalIdType": "c8y_Serial",
+                "mandatoryValues": [],
+                "customValues": [
+                    {
+                        "path": "c8y_Agent.name",
+                        "type": "STRING",
+                        "value": null
+                    },
+                    {
+                        "path": "c8y_Agent.version",
+                        "type": "STRING",
+                        "value": ""
+                    },
+                    {
+                        "path": "c8y_Agent.url",
+                        "type": "STRING",
+                        "value": ""
+                    }
+                ],
+                "name": "Agent"
+            }
+        ],
+        "responseTemplates": [
+            {
+                "msgId": "dm501",
+                "condition": "c8y_Docker",
+                "base": "",
+                "name": "Docker",
+                "pattern": [
+                    "c8y_Docker.command",
+                    "c8y_Docker.options.name",
+                    "c8y_Docker.options.image",
+                    "c8y_Docker.options.ports",
+                    "c8y_Docker.containerID",
+                    "c8y_Docker.name"
+                ]
+            },
+            {
+                "msgId": "dm502",
+                "condition": "c8y_Message",
+                "base": "",
+                "name": "Message",
+                "pattern": [
+                    "c8y_Message.text"
+                ]
+            }
+        ]
+    },
+    "__externalId": "c8y-dm-agent-v1.0"
+}
